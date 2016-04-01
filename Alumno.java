@@ -47,4 +47,15 @@ public class Alumno
         }
         return total/notas.length;
     }
+    
+    /**
+     * Comprobar si esta aprobado
+     */
+    public boolean estaAprobado() {
+        boolean estaAprobado = false;
+        if (calcularMedia()>=NOTA_MINIMA_APROBADO) {
+            estaAprobado = true;
+        }
+        return estaAprobado;
+    }
 }
