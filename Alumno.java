@@ -58,4 +58,20 @@ public class Alumno
         }
         return estaAprobado;
     }
+    
+    /**
+     * Muestra los datos del alumno
+     */
+    public void mostrarDatos() {
+        System.out.println("Nombre:" + nombre);
+        System.out.println("Edad" + edad);
+        System.out.println("Número de clase: " + numeroDeClase);
+        System.out.println("Nota media: " + notaMedia);
+        if (estaAprobado()) {
+            System.out.println("Está aprobado");
+        }
+        else {
+            System.out.println("No está aprobado");
+        }
+    }
 }
