@@ -36,4 +36,15 @@ public class Alumno
         nuevasNotas[notas.length] = nota;
         notas = nuevasNotas;
     }
+    
+    /**
+     * Calcular media
+     */
+    public float calcularMedia() {
+        int total = 0;
+        for(int index =0; index<notas.length; index++) {
+            total += notas[index];
+        }
+        return total/notas.length;
+    }
 }
