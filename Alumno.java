@@ -26,4 +26,14 @@ public class Alumno
         Random random = new Random();
         numeroDeClase = 1 + random.nextInt(30);
     }
+    
+    /**
+     * Método que añade notas
+     */
+    public void addNota(int nota) {
+        int[] nuevasNotas = new int[notas.length+1];
+        nuevasNotas = notas;
+        nuevasNotas[notas.length] = nota;
+        notas = nuevasNotas;
+    }
 }
