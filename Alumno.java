@@ -11,8 +11,6 @@ public class Alumno
     private int edad;
     private int numeroDeClase;
     private int[] notas;
-    private float notaMedia;
-    private boolean aprobado;
     private static final int NOTA_MINIMA_APROBADO = 5;
 
     /**
@@ -26,28 +24,39 @@ public class Alumno
         Random random = new Random();
         numeroDeClase = 1 + random.nextInt(30);
     }
-    
+
     /**
      * Método que añade notas
      */
     public void addNota(int nota) {
-        int[] nuevasNotas = new int[notas.length+1];
-        nuevasNotas = notas;
-        nuevasNotas[notas.length] = nota;
-        notas = nuevasNotas;
+        if(nota<=10 && nota>=0) {
+            int[] nuevasNotas = new int[notas.length+1];
+            for (int index = 0; index<notas.length; index++) {
+                nuevasNotas[index] = notas[index];
+            }
+            nuevasNotas[notas.length] = nota;
+            notas = nuevasNotas;
+        }
+        else {
+            System.out.println("Nota no valida");
+        }
     }
-    
+
     /**
      * Calcular media
      */
     public float calcularMedia() {
         int total = 0;
-        for(int index =0; index<notas.length; index++) {
-            total += notas[index];
+        float media = 0;
+        if(notas.length>0) {
+            for(int index =0; index<notas.length; index++) {
+                total += notas[index];               
+            }
+            media = (float) total/notas.length;
         }
-        return total/notas.length;
+        return media;
     }
-    
+
     /**
      * Comprobar si esta aprobado
      */
@@ -58,15 +67,15 @@ public class Alumno
         }
         return estaAprobado;
     }
-    
+
     /**
      * Muestra los datos del alumno
      */
     public void mostrarDatos() {
-        System.out.println("Nombre:" + nombre);
-        System.out.println("Edad" + edad);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
         System.out.println("Número de clase: " + numeroDeClase);
-        System.out.println("Nota media: " + notaMedia);
+        System.out.println("Nota media: " + calcularMedia());
         if (estaAprobado()) {
             System.out.println("Está aprobado");
         }
